@@ -6,7 +6,7 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/03 10:00:16 by daviwel           #+#    #+#              #
-#    Updated: 2016/06/03 16:43:58 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/06/03 17:11:39 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,3 +47,12 @@ run:
 	rm trace.txt
 	touch trace.txt
 	./filler_vm -p1 ./filler -p2 ./carli.filler -v -f w1.flr
+
+qr:
+	gcc -I libft/ -c $(SRC)
+	gcc -o $(NAME) $(OBJ) -L libft/ -lft
+	rm trace.txt
+	touch trace.txt
+	./filler_vm -p1 ./filler -p2 ./carli.filler -v -f w1.flr
+	
+
