@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:28:20 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/03 10:57:25 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/03 14:18:57 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ int	main(void)
 	int		fd;
 	char	*str;
 	char	str2[100];
+	char	buffer[512];
 	int	i;
 
-	i = 0;
-	fd = open("data.txt", O_RDONLY);
-	while (i < 5)
-	{
-		get_next_line(fd, &str);
-		ft_putendl(str);
-		i++;
-	}
-	read(0, str2, 80);
-	ft_putstr(str2);
+//	i = 0;
+	fd = open("trace.txt", O_WRONLY);
+//	close(fd);
+	get_next_line(0, &str);
+	write(fd, str, strlen(str));
+	close(fd);
+	//i = read(0, str2, 10);
+	//str2[i] = '\0';
+	ft_putstr(str);
 	/*ft_handlestr(&info);
 	ft_putnbr(info.board.x);
 	ft_putchar('\n');
