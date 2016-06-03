@@ -6,7 +6,7 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/03 10:00:16 by daviwel           #+#    #+#              #
-#    Updated: 2016/06/03 14:14:57 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/06/03 15:09:45 by daviwel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,6 @@ re: fclean all
 norme:
 	norminette $(SRC)
 
-quick:
+q:
 	gcc -I libft/ -c $(SRC)
 	gcc -o $(NAME) $(OBJ) -L libft/ -lft
