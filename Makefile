@@ -6,13 +6,13 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/03 10:00:16 by daviwel           #+#    #+#              #
-#    Updated: 2016/06/03 17:11:39 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/06/04 07:43:09 by daviwel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = filler
 
-SRC = main.c input.c ft_puttrace.c
+SRC = main.c input.c ft_puttrace.c rough_check.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -48,11 +48,4 @@ run:
 	touch trace.txt
 	./filler_vm -p1 ./filler -p2 ./carli.filler -v -f w1.flr
 
-qr:
-	gcc -I libft/ -c $(SRC)
-	gcc -o $(NAME) $(OBJ) -L libft/ -lft
-	rm trace.txt
-	touch trace.txt
-	./filler_vm -p1 ./filler -p2 ./carli.filler -v -f w1.flr
-	
-
+qr: q run

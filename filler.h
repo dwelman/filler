@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:25:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/03 17:03:58 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/04 07:42:35 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ typedef struct	s_info
 {
 	t_grid	board;
 	t_grid	token;
-	int		player;
+	char	player;
 }				t_info;
 
 void			get_input(t_info *info);
+
+int				**get_available_coords(t_info *info);
+
 void			puttrace(char *file, char *str);
+
 void			puttracen(char *file, char *str,  int num);
 
 #endif

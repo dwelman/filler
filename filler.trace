@@ -1,0 +1,7 @@
+seed = 8395
+O: error on input
+./filler: Segfault at 0
+X: error on input
+./carli.filler won
+Score:
+0AGAINST0

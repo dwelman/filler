@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:28:20 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/03 15:09:24 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/04 07:41:54 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(void)
 	//fd = open("trace.txt", O_WRONLY);
 	//write(fd, str, strlen(str));
 	get_input(&info);
+	get_available_coords(&info);
 	//close(fd);
 	//ft_putstr(str);
 	return (0);
