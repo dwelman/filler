@@ -12,31 +12,19 @@
 ..............................
 ..............................
 ..............................
-*
-*
-x =  : 30
-y =  : 13
-x =  : 1
-y =  : 2
-y - 1
-y + 1
-token x =  : 26
-token y =  : 6
-y - 1
-y + 1
-token x =  : 25
-token y =  : 7
-y - 1
-y + 1
-y - 1
-y + 1
-token x =  : 27
-token y =  : 7
-y - 1
-y + 1
-token x =  : 26
-token y =  : 8
-y - 1
-y + 1
-token x =  : 26
-token y =  : 9
+***
+.**
+board x =  : 30
+board y =  : 13
+token x =  : 3
+token y =  : 2
+pos x =  : 26
+pos y =  : 6
+pos x =  : 25
+pos y =  : 7
+pos x =  : 27
+pos y =  : 7
+pos x =  : 26
+pos y =  : 8
+pos x =  : 26
+pos y =  : 9

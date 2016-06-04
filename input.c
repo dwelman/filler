@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/04 08:57:18 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/04 11:58:07 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void	get_input(t_info *info)
 	get_player(info);
 	info->board = get_map();
 	info->token = get_token();
-	puttracen("trace.txt", "x = ", info->board.x);
-	puttracen("trace.txt", "y = ", info->board.y);
-	puttracen("trace.txt", "x = ", info->token.x);
-	puttracen("trace.txt", "y = ", info->token.y);
+	puttracen("trace.txt", "board x = ", info->board.x);
+	puttracen("trace.txt", "board y = ", info->board.y);
+	puttracen("trace.txt", "token x = ", info->token.x);
+	puttracen("trace.txt", "token y = ", info->token.y);
 }

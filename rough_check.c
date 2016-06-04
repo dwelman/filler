@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 06:22:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/04 09:57:54 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/04 12:40:22 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	check_cell(t_info *info, int x, int y)
 			alive++;
 		if (y - 1 > 0)
 		{
-			puttrace("trace.txt", "y - 1");
 			if (ft_toupper(info->board.map[y - 1][x] == piece))
 				alive++;
 		}
@@ -45,7 +44,6 @@ int	check_cell(t_info *info, int x, int y)
 			alive++;
 		if (y + 1 < info->board.y)
 		{
-			puttrace("trace.txt", "y + 1");
 			if (ft_toupper(info->board.map[y + 1][x] == piece))
 				alive++;
 		}
@@ -59,6 +57,28 @@ int	check_cell(t_info *info, int x, int y)
 	return (0);
 }
 
+int	count_valid(t_info *info)
+{
+	int	count;
+	int	x;
+	int	y;
+
+	count = 0;
+	y = 0;
+	while (y < info->board.y)
+	{
+		x = 0;
+		while (x < info->board.x)
+		{
+			if (check_cell(info, x, y))
+				count++;
+			x++;
+		}
+		y++;
+	}
+	return (count);
+}
+
 int	**get_available_coords(t_info *info)
 {
 	int	x;
@@ -67,6 +87,7 @@ int	**get_available_coords(t_info *info)
 
 	y = 0;
 	i = 0;
+	info->pos = (t_valid*)malloc(sizeof(t_valid) * count_valid(info));
 	while (y < info->board.y)
 	{
 		x = 0;
@@ -74,11 +95,11 @@ int	**get_available_coords(t_info *info)
 		{
 			if (check_cell(info, x, y))
 			{
-				/*grid[i][0] = x;
-				grid[i][1] = y;
-				i++;*/
-				puttracen("trace.txt", "token x = ", x);
-				puttracen("trace.txt", "token y = ", y);
+				info->pos[i].x = x;
+				info->pos[i].y = y;
+				puttracen("trace.txt", "pos x = ", info->pos[i].x);
+				puttracen("trace.txt", "pos y = ", info->pos[i].y);
+				i++;
 			}
 			x++;
 		}

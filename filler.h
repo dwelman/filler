@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:25:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/04 08:54:22 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/04 11:52:14 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,19 @@ typedef struct	s_grid
 	int		y;
 }				t_grid;
 
+typedef struct	s_valid
+{
+	int	x;
+	int	y;
+	int	weight;
+}				t_valid;
+
 typedef struct	s_info
 {
 	t_grid	board;
 	t_grid	token;
 	char	player;
+	t_valid	*pos;
 }				t_info;
 
 void			get_input(t_info *info);
