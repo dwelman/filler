@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 06:22:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/04 07:51:42 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/04 08:41:21 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	check_cell(t_info *info, int x, int y)
 
 	alive = 0;
 	piece = ft_toupper(info->player);
+	//puttrace("trace.txt", info->board.map[0]);
+	puttrace("trace.txt", "Hey");
 	if (ft_toupper(info->board.map[x][y]) == piece)
 	{
 		if (x - 1 > 0)
