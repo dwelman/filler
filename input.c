@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/04 06:01:25 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/04 08:57:18 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_grid	get_token(void)
 {
 	char	*str;
 	char	*line;
-	char	**map;
 	t_grid	ret;
 	int		i;
 
@@ -26,13 +25,12 @@ t_grid	get_token(void)
 	str = ft_strchr(str, ' ');
 	ret.x = ft_atoi(str);
 	i = 0;
-	map = (char**)malloc(sizeof(char*) * ret.y + 1);
-	//get_next_line(0, &line);
+	ret.map = (char**)malloc(sizeof(char*) * ret.y + 1);
 	while (i < ret.y)
 	{
 		get_next_line(0, &line);
-		map[i] = line;
-		puttrace("trace.txt", map[i]);
+		ret.map[i] = line;
+		puttrace("trace.txt", ret.map[i]);
 		i++;
 	}
 	return (ret);
@@ -42,7 +40,6 @@ t_grid	get_map(void)
 {
 	char	*str;
 	char	*line;
-	char	**map;
 	t_grid	ret;
 	int		i;
 
@@ -52,14 +49,14 @@ t_grid	get_map(void)
 	str = ft_strchr(str, ' ');
 	ret.x = ft_atoi(str);
 	i = 0;
-	map = (char**)malloc(sizeof(char*) * ret.y + 1);
+	ret.map = (char**)malloc(sizeof(char*) * ret.y + 1);
 	get_next_line(0, &line);
 	while (i <= ret.y)
 	{
 		get_next_line(0, &line);
 		line = ft_strchr(line, ' ');
-		map[i] = ++line;
-		puttrace("trace.txt", map[i]);
+		ret.map[i] = ++line;
+		puttrace("trace.txt", ret.map[i]);
 		i++;
 	}
 	return (ret);
@@ -71,8 +68,10 @@ void	get_player(t_info *info)
 
 	get_next_line(0, &str);
 	str = ft_strchr(str, 'p');
-	info->player = ft_atoi(++str);
-	puttracen("trace.txt", "player = ", info->player);
+	if (ft_atoi(++str) == 1)
+		info->player = 'o';
+	else
+		info->player = 'x';
 }
 
 void	get_input(t_info *info)

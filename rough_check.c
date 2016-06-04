@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 06:22:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/04 08:41:21 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/04 09:57:54 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,40 +19,42 @@ int	check_cell(t_info *info, int x, int y)
 
 	alive = 0;
 	piece = ft_toupper(info->player);
-	//puttrace("trace.txt", info->board.map[0]);
-	puttrace("trace.txt", "Hey");
-	if (ft_toupper(info->board.map[x][y]) == piece)
+	if (ft_toupper(info->board.map[y][x]) == piece)
 	{
 		if (x - 1 > 0)
 		{
-			if (ft_toupper(info->board.map[x - 1][y]) == piece)
+			if (ft_toupper(info->board.map[y][x - 1]) == piece)
 				alive++;
 		}
 		else
 			alive++;	
 		if (x + 1 < info->board.x)
 		{
-			if (ft_toupper(info->board.map[x + 1][y] == piece))
+			if (ft_toupper(info->board.map[y][x + 1] == piece))
 				alive++;
 		}
 		else
 			alive++;
 		if (y - 1 > 0)
 		{
-			if (ft_toupper(info->board.map[x][y - 1] == piece))
+			puttrace("trace.txt", "y - 1");
+			if (ft_toupper(info->board.map[y - 1][x] == piece))
 				alive++;
 		}
 		else
 			alive++;
 		if (y + 1 < info->board.y)
 		{
-			if (ft_toupper(info->board.map[x][y + 1] == piece))
+			puttrace("trace.txt", "y + 1");
+			if (ft_toupper(info->board.map[y + 1][x] == piece))
 				alive++;
 		}
 		else
 			alive++;
 		if (alive < 4)
 			return (1);
+		else
+			return (0);
 	}
 	return (0);
 }

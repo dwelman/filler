@@ -1,6 +1,4 @@
-seed = 2802
-O: error on input
-./filler: Segfault at 0
+seed = 5227
 X: error on input
 ./carli.filler won
 Score:
