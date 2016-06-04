@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:28:20 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/04 09:58:22 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/04 14:09:06 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(void)
 	char	str2[100];
 	char	buffer[512];
 
+	init_info(&info);
 	//fd = open("trace.txt", O_WRONLY);
 	//write(fd, str, strlen(str));
 	get_input(&info);

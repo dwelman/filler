@@ -6,13 +6,13 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/03 10:00:16 by daviwel           #+#    #+#              #
-#    Updated: 2016/06/04 07:43:09 by daviwel          ###   ########.fr        #
+#    Updated: 2016/06/04 13:59:27 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = filler
 
-SRC = main.c input.c ft_puttrace.c rough_check.c
+SRC = main.c input.c ft_puttrace.c rough_check.c init.c
 
 OBJ = $(SRC:.c=.o)
 

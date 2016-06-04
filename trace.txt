@@ -12,19 +12,18 @@
 ..............................
 ..............................
 ..............................
-***
-.**
+...**
 board x =  : 30
 board y =  : 13
-token x =  : 3
-token y =  : 2
-pos x =  : 26
-pos y =  : 6
-pos x =  : 25
-pos y =  : 7
-pos x =  : 27
-pos y =  : 7
-pos x =  : 26
-pos y =  : 8
-pos x =  : 26
-pos y =  : 9
+token x =  : 5
+token y =  : 1
+link x =  : 26
+link y =  : 6
+link x =  : 25
+link y =  : 7
+link x =  : 27
+link y =  : 7
+link x =  : 26
+link y =  : 8
+link x =  : 26
+link y =  : 9
