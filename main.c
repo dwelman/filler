@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:28:20 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/04 14:09:06 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/05 14:40:49 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int	main(void)
 	//write(fd, str, strlen(str));
 	get_input(&info);
 	get_available_coords(&info);
+	place_token(&info);
 	//close(fd);
 	//ft_putstr(str);
-	ft_putstr("2 2");
+	//ft_putstr("2 2");
 	return (0);
 }

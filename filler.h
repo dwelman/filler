@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:25:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/04 14:08:54 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/05 14:58:13 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,9 @@ t_grid			new_grid(char **map, int x, int y);
 t_valid			new_pos(int x, int y, int weight);
 
 void			init_info(t_info *info);
+
+void			place_token(t_info *info);
+
+void			print_coord(t_valid coord);
 
 #endif

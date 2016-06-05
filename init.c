@@ -6,11 +6,19 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 13:49:34 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/04 14:08:17 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/05 14:39:57 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+void	print_coord(t_valid coord)
+{
+	ft_putnbr(coord.x);
+	ft_putchar(' ');
+	ft_putnbr(coord.y);
+	ft_putchar('\n');
+}
 
 t_valid	new_pos(int x, int y, int weight)
 {
