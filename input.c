@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/05 15:42:06 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 10:23:12 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	get_player(t_info *info)
 
 	get_next_line(0, &str);
 	str = ft_strchr(str, 'p');
-	if (ft_atoi(++str) == 1)
+	info->pnum = ft_atoi(++str) == 1;
+	if (info->pnum == 1)
 		info->player = 'O';
 	else
 		info->player = 'X';
@@ -81,7 +82,13 @@ void	get_input(t_info *info)
 	char	*str;
 
 	i = 0;
-	get_player(info);
+	if (info->turns == 0)
+		get_player(info);
+	else
+	{
+		get_next_line(0, &str);
+		free(str);
+	}
 	info->board = get_map();
 	info->token = get_token();
 	puttracen("trace.txt", "board x = ", info->board.x);
