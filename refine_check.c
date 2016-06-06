@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:42:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/06 10:27:51 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 14:56:26 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,23 @@ int		count_links(t_info *info, int x, int y)
 	{
 		t_x = 0;
 		x = x_org;
-		//puttracen("trace.txt", "t_x = ", t_x);
-		//puttracen("trace.txt", "t_y = ", t_y);
-		//puttracen("trace.txt", "x = ", x);
-		//puttracen("trace.txt", "y = ", y);
+	//	puttracen("trace.txt", "t_x = ", t_x);
+	//	puttracen("trace.txt", "t_y = ", t_y);
+	//	puttracen("trace.txt", "x = ", x);
+		puttracen("trace.txt", "y = ", y, info->fd);
 		while (t_x < info->token.x)
 		{
 			if (info->token.map[t_y][t_x] == '*'
-					&& ft_toupper(info->board.map[y][x]) == ft_toupper(info->player))
+					&& (ft_toupper(info->board.map[y][x]) == ft_toupper(info->player)
+					|| ft_toupper(info->board.map[y][x] == info->p2)))
 						links++;
-			if (links > 1)
-				return (0);
 			t_x++;
 			x++;
 		}
 		y++;
 		t_y++;
 	}
-	//puttracen("trace.txt", "links = ", links);
+	puttracen("trace.txt", "links = ", links, info->fd);
 	return (links);
 }
 
@@ -60,7 +59,7 @@ int		is_valid(t_info *info, int x, int y)
 	return (1);
 }
 
-void	place_token(t_info *info)
+int	place_token(t_info *info)
 {
 	int	i;
 	int	x;
@@ -71,26 +70,24 @@ void	place_token(t_info *info)
 	i = 0;
 	info->pos_c = 0;
 	info->pos = (t_valid*)malloc(sizeof(t_valid) * info->link_c * info->token.y * info->token.x);
-	// ^ allocates enough for all the possible placements of token per link
 	while (i < info->link_c) //loop through links found
 	{
 		y = info->link[i].y - info->token.y + 1;
-		x = info->link[i].x - info->token.x + 1;
-		//puttracen("trace.txt", "testing x = ", x);
-		//puttracen("trace.txt", "testing y = ", y);
-		//loop through all poossible placements for link, testing validity
+		ty = 0;
 		while (ty < info->token.y)
 		{
 			tx = 0;
 			x = info->link[i].x - info->token.x + 1;
 			while (tx < info->token.x)
 			{
-				if (is_valid(info, x, y))
-				{
-					info->pos[info->pos_c++] = new_pos(x, y, 0);
-					//puttracen("trace.txt", "valid x = ", x);
-					//puttracen("trace.txt", "valid y = ", y);	
-				}
+				if (x >= 0 && y >= 0)
+					if (is_valid(info, x, y))
+					{
+						info->pos[info->pos_c] = new_pos(x, y, 0);
+						//puttracen("trace.txt", "valid x = ", info->pos[info->pos_c].x);
+						//puttracen("trace.txt", "valid y = ", info->pos[info->pos_c].y);
+						info->pos_c++;
+					}
 				x++;
 				tx++;
 			}
@@ -99,5 +96,15 @@ void	place_token(t_info *info)
 		}
 		i++;
 	}
-	print_coord(info->pos[0]);
+	if (info->pos_c)
+	{
+		print_coord(info->pos[0]);
+		return (1);
+	}
+	else
+	{
+		puttrace("trace.txt", "no valid found", info->fd);
+		ft_putstr("0 0\n");
+		return (0);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 06:22:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/04 13:59:59 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 12:08:58 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int	**get_available_coords(t_info *info)
 			if (check_cell(info, x, y))
 			{
 				info->link[info->link_c] = new_pos(x, y, 0);
-				puttracen("trace.txt", "link x = ", info->link[info->link_c].x);
-				puttracen("trace.txt", "link y = ", info->link[info->link_c].y);
+				//puttracen("trace.txt", "link x = ", info->link[info->link_c].x);
+				//puttracen("trace.txt", "link y = ", info->link[info->link_c].y);
 				info->link_c++;
 			}
 			x++;

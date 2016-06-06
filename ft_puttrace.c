@@ -6,16 +6,19 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 16:40:44 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/03 16:44:40 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 15:03:03 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	puttrace(char *file, char *str)
+int		openfile(char *file)
+{
+	return(open(file, O_RDWR | O_APPEND));
+}
+
+void	puttrace(char *file, char *str, int fd)
  {
-     int fd;
-      fd = open(file, O_RDWR | O_APPEND);
      if (fd != -1)
      {
          ft_putendl_fd(str, fd);
@@ -23,10 +26,8 @@ void	puttrace(char *file, char *str)
      }
  }
 
- void    puttracen(char *file, char *str,  int num)
+ void    puttracen(char *file, char *str,  int num, int fd)
  {
-     int fd;
-      fd = open(file, O_RDWR | O_APPEND);
      if (fd != -1)
      {
          ft_putstr_fd(str, fd);

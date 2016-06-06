@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:25:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/06 10:59:05 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 14:55:25 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,22 @@ typedef struct	s_info
 	t_grid	token;
 	char	player;
 	int		pnum;
+	char	p2;
 	t_valid	*link;
 	int		link_c;
 	t_valid	*pos;
 	int		pos_c;
 	int		turns;
+	int		fd;
 }				t_info;
 
 void			get_input(t_info *info);
 
 int				**get_available_coords(t_info *info);
 
-void			puttrace(char *file, char *str);
+void			puttrace(char *file, char *str, int fd);
 
-void			puttracen(char *file, char *str,  int num);
+void			puttracen(char *file, char *str,  int num, int fd);
 
 t_grid			new_grid(char **map, int x, int y);
 
@@ -56,12 +58,14 @@ t_valid			new_pos(int x, int y, int weight);
 
 void			init_info(t_info *info);
 
-void			place_token(t_info *info);
+int				place_token(t_info *info);
 
 void			print_coord(t_valid coord);
 
 void			cleanup(t_info *info);
 
 void			get_player(t_info *info);
+
+int				openfile(char *file);
 
 #endif
