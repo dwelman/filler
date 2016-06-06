@@ -6,13 +6,13 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/03 10:00:16 by daviwel           #+#    #+#              #
-#    Updated: 2016/06/04 13:59:27 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/06/06 09:48:52 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = filler
 
-SRC = main.c input.c ft_puttrace.c rough_check.c init.c
+SRC = main.c input.c ft_puttrace.c rough_check.c init.c refine_check.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -46,6 +46,6 @@ q:
 run:
 	rm trace.txt
 	touch trace.txt
-	./filler_vm -p1 ./filler -p2 ./carli.filler -v -f w1.flr
+	./filler_vm -p1 ./filler -p2 ./filler -v -f w2.flr
 
 qr: q run
