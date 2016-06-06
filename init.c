@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 13:49:34 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/06 09:44:08 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 10:15:08 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ void	init_info(t_info *info)
 	info->link_c = 0;
 	info->pos = NULL;
 	info->pos_c = 0;
+	info->turns = 0;
 }
