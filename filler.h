@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:25:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/06 10:15:39 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 10:59:05 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,9 @@ void			init_info(t_info *info);
 void			place_token(t_info *info);
 
 void			print_coord(t_valid coord);
+
+void			cleanup(t_info *info);
+
+void			get_player(t_info *info);
 
 #endif

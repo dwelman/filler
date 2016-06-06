@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:42:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/06 09:21:03 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 10:27:51 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int		count_links(t_info *info, int x, int y)
 	{
 		t_x = 0;
 		x = x_org;
-		puttracen("trace.txt", "t_x = ", t_x);
-		puttracen("trace.txt", "t_y = ", t_y);
-		puttracen("trace.txt", "x = ", x);
-		puttracen("trace.txt", "y = ", y);
+		//puttracen("trace.txt", "t_x = ", t_x);
+		//puttracen("trace.txt", "t_y = ", t_y);
+		//puttracen("trace.txt", "x = ", x);
+		//puttracen("trace.txt", "y = ", y);
 		while (t_x < info->token.x)
 		{
 			if (info->token.map[t_y][t_x] == '*'
@@ -43,7 +43,7 @@ int		count_links(t_info *info, int x, int y)
 		y++;
 		t_y++;
 	}
-	puttracen("trace.txt", "links = ", links);
+	//puttracen("trace.txt", "links = ", links);
 	return (links);
 }
 
@@ -76,8 +76,8 @@ void	place_token(t_info *info)
 	{
 		y = info->link[i].y - info->token.y + 1;
 		x = info->link[i].x - info->token.x + 1;
-		puttracen("trace.txt", "testing x = ", x);
-		puttracen("trace.txt", "testing y = ", y);
+		//puttracen("trace.txt", "testing x = ", x);
+		//puttracen("trace.txt", "testing y = ", y);
 		//loop through all poossible placements for link, testing validity
 		while (ty < info->token.y)
 		{
@@ -88,8 +88,8 @@ void	place_token(t_info *info)
 				if (is_valid(info, x, y))
 				{
 					info->pos[info->pos_c++] = new_pos(x, y, 0);
-					puttracen("trace.txt", "valid x = ", x);
-					puttracen("trace.txt", "valid y = ", y);	
+					//puttracen("trace.txt", "valid x = ", x);
+					//puttracen("trace.txt", "valid y = ", y);	
 				}
 				x++;
 				tx++;

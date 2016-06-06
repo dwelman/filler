@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/06 10:23:12 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 11:31:39 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_grid	get_token(void)
 	str = ft_strchr(str, ' ');
 	ret.x = ft_atoi(str);
 	i = 0;
-	ret.map = (char**)malloc(sizeof(char*) * ret.y + 1);
+	ret.map = (char**)malloc(sizeof(char*) * ret.y);
 	while (i < ret.y)
 	{
 		get_next_line(0, &line);
@@ -49,9 +49,10 @@ t_grid	get_map(void)
 	str = ft_strchr(str, ' ');
 	ret.x = ft_atoi(str);
 	i = 0;
-
-	ret.map = (char**)malloc(sizeof(char*) * ret.y + 1);
+	ret.map = (char**)malloc(sizeof(char*) * ret.y);
 	get_next_line(0, &line);
+	puttrace("trace.txt", "first line read = ");
+	puttrace("trace.txt", line);
 	while (i <= ret.y)
 	{
 		get_next_line(0, &line);
@@ -82,13 +83,6 @@ void	get_input(t_info *info)
 	char	*str;
 
 	i = 0;
-	if (info->turns == 0)
-		get_player(info);
-	else
-	{
-		get_next_line(0, &str);
-		free(str);
-	}
 	info->board = get_map();
 	info->token = get_token();
 	puttracen("trace.txt", "board x = ", info->board.x);
