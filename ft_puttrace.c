@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 16:40:44 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/06 15:03:03 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 15:30:31 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	puttrace(char *file, char *str, int fd)
      if (fd != -1)
      {
          ft_putendl_fd(str, fd);
-         close(fd);
      }
  }
 
@@ -34,6 +33,5 @@ void	puttrace(char *file, char *str, int fd)
          ft_putstr_fd(" : ", fd);
          ft_putnbr_fd(num, fd);
          ft_putchar_fd('\n', fd);
-         close(fd);
      }
  }
