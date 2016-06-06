@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/04 11:58:07 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/05 15:42:06 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_grid	get_map(void)
 	str = ft_strchr(str, ' ');
 	ret.x = ft_atoi(str);
 	i = 0;
+
 	ret.map = (char**)malloc(sizeof(char*) * ret.y + 1);
 	get_next_line(0, &line);
 	while (i <= ret.y)
@@ -69,9 +70,9 @@ void	get_player(t_info *info)
 	get_next_line(0, &str);
 	str = ft_strchr(str, 'p');
 	if (ft_atoi(++str) == 1)
-		info->player = 'o';
+		info->player = 'O';
 	else
-		info->player = 'x';
+		info->player = 'X';
 }
 
 void	get_input(t_info *info)
