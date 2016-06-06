@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/06 14:42:36 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 15:51:14 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_grid	get_token(void)
 	{
 		get_next_line(0, &line);
 		ret.map[i] = line;
-		//puttrace("trace.txt", ret.map[i]);
 		i++;
 	}
 	return (ret);
@@ -61,7 +60,6 @@ t_grid	get_map(void)
 		temp = ft_strdup(++line);
 		free(t2);
 		ret.map[i] = temp;
-		//puttrace("trace.txt", ret.map[i]);
 		i++;
 	}
 	return (ret);
@@ -94,8 +92,4 @@ void	get_input(t_info *info)
 	i = 0;
 	info->board = get_map();
 	info->token = get_token();
-	//puttracen("trace.txt", "board x = ", info->board.x);
-	//puttracen("trace.txt", "board y = ", info->board.y);
-	//puttracen("trace.txt", "token x = ", info->token.x);
-	//puttracen("trace.txt", "token y = ", info->token.y);
 }

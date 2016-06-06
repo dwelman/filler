@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:28:20 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/06 14:55:42 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 15:55:32 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(void)
 {
 	t_info	info;
-	char	*str;
 	int		found;
 
 	init_info(&info);
@@ -34,5 +33,6 @@ int	main(void)
 		}
 		info.turns++;
 	}
+	close(info.fd);
 	return (0);
 }

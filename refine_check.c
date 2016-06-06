@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:42:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/06 14:56:26 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/06 15:45:28 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,22 @@ int		count_links(t_info *info, int x, int y)
 	//	puttracen("trace.txt", "t_x = ", t_x);
 	//	puttracen("trace.txt", "t_y = ", t_y);
 	//	puttracen("trace.txt", "x = ", x);
-		puttracen("trace.txt", "y = ", y, info->fd);
+	//	puttracen("trace.txt", "y = ", y, info->fd);
 		while (t_x < info->token.x)
 		{
 			if (info->token.map[t_y][t_x] == '*'
-					&& (ft_toupper(info->board.map[y][x]) == ft_toupper(info->player)
-					|| ft_toupper(info->board.map[y][x] == info->p2)))
+					&& ft_toupper(info->board.map[y][x]) == ft_toupper(info->player))
 						links++;
+			if  (ft_toupper(info->board.map[y][x] == info->p2
+					&& info->token.map[t_y][t_x] == '*'))
+					links += 2;
 			t_x++;
 			x++;
 		}
 		y++;
 		t_y++;
 	}
-	puttracen("trace.txt", "links = ", links, info->fd);
+	//puttracen("trace.txt", "links = ", links, info->fd);
 	return (links);
 }
 
@@ -84,8 +86,8 @@ int	place_token(t_info *info)
 					if (is_valid(info, x, y))
 					{
 						info->pos[info->pos_c] = new_pos(x, y, 0);
-						//puttracen("trace.txt", "valid x = ", info->pos[info->pos_c].x);
-						//puttracen("trace.txt", "valid y = ", info->pos[info->pos_c].y);
+						//puttracen("trace.txt", "valid x = ", info->pos[info->pos_c].x, info->fd);
+						//puttracen("trace.txt", "valid y = ", info->pos[info->pos_c].y, info->fd);
 						info->pos_c++;
 					}
 				x++;
