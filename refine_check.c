@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:42:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 11:18:17 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 11:40:54 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,21 @@ int		count_links(t_info *info, int x, int y)
 	{
 		t_x = 0;
 		x = x_org;
-		while (t_x < info->token.x && star != info->num_str && x < info->board.x && y < info->board.y)
+	//	puttracen("trace.txt", "t_x = ", t_x);
+	//	puttracen("trace.txt", "t_y = ", t_y);
+	//	if (x > info->board.x || y > info->board.y || x < 0 || y < 0)
+	//	{
+	//		puttracen("trace.txt", "x = ", x, info->fd);
+	//		puttracen("trace.txt", "y = ", y, info->fd);
+	//	}
+		while (t_x < info->token.x && star != info->num_str && (x < info->board.x || y < info->board.y))
 		{
 			if (info->token.map[t_y][t_x] == '*')
 				star++;
-			if (info->token.map[t_y][t_x] == '*'
-					&& ft_toupper(info->board.map[y][x]) == ft_toupper(info->player))
-						links++;
+			if ((x < info->board.x || y < info->board.y) )
+				if (info->token.map[t_y][t_x] == '*'
+						&& ft_toupper(info->board.map[y][x]) == ft_toupper(info->player))
+							links++;
 			if  (ft_toupper(info->board.map[y][x] == info->p2
 					&& info->token.map[t_y][t_x] == '*'))
 					links += 2;
@@ -44,6 +52,7 @@ int		count_links(t_info *info, int x, int y)
 		y++;
 		t_y++;
 	}
+	//puttracen("trace.txt", "links = ", links, info->fd);
 	return (links);
 }
 
@@ -53,8 +62,8 @@ int		is_valid(t_info *info, int x, int y)
 	int	t_y;
 
 	t_y = 0;
-//	if (x + info->token.x > info->board.x || y + info->token.y - 1 > info->board.y)//size check
-//		return (0);
+	if (x + info->token.x > info->board.x || y + info->token.y - 1 > info->board.y)//size check
+		return (0);
 	if (count_links(info, x, y) != 1)
 		return (0);
 	return (1);
