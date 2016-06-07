@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 07:45:05 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/07 12:34:22 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	count_token(t_info *info)
 	}
 }
 
-t_grid	get_token(void)
+t_grid	get_token(t_info *info)
 {
 	char	*str;
 	char	*line;
@@ -47,16 +47,18 @@ t_grid	get_token(void)
 	ret.x = ft_atoi(str);
 	i = 0;
 	ret.map = (char**)malloc(sizeof(char*) * ret.y);
+//	puttrace("", "map :", info->fd);
 	while (i < ret.y)
 	{
 		get_next_line(0, &line);
 		ret.map[i] = line;
+//		puttrace("", ret.map[i], info->fd);
 		i++;
 	}
 	return (ret);
 }
 
-t_grid	get_map(void)
+t_grid	get_map(t_info *info)
 {
 	char	*str;
 	char	*line;
@@ -72,15 +74,18 @@ t_grid	get_map(void)
 	ret.x = ft_atoi(str);
 	i = 0;
 	ret.map = (char**)malloc(sizeof(char*) * ret.y);
+//	puttrace("", "map :", info->fd);
 	get_next_line(0, &line);
-	while (i <= ret.y)
+	while (i < ret.y)
 	{
 		get_next_line(0, &line);
+//		puttrace("", line, info->fd);
 		t2 = line;
 		line = ft_strchr(line, ' ');
 		temp = ft_strdup(++line);
 		free(t2);
 		ret.map[i] = temp;
+//		puttrace("", ret.map[i], info->fd);
 		i++;
 	}
 	return (ret);
@@ -92,6 +97,8 @@ void	get_player(t_info *info)
 
 	get_next_line(0, &str);
 	str = ft_strchr(str, 'p');
+//	puttrace("", "player :", info->fd);
+//	puttrace("", str - 1, info->fd);
 	info->pnum = ft_atoi(++str);
 	if (info->pnum == 1)
 	{
@@ -111,7 +118,7 @@ void	get_input(t_info *info)
 	char	*str;
 
 	i = 0;
-	info->board = get_map();
-	info->token = get_token();
+	info->board = get_map(info);
+	info->token = get_token(info);
 	count_token(info);
 }

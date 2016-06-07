@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:42:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 11:40:54 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 11:59:32 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		count_links(t_info *info, int x, int y)
 	t_y = 0;
 	links = 0;
 	star = 0;
-	while (t_y < info->token.y && star != info->num_str)
+	while (t_y < info->token.y && star < info->num_str)
 	{
 		t_x = 0;
 		x = x_org;
@@ -35,14 +35,13 @@ int		count_links(t_info *info, int x, int y)
 	//		puttracen("trace.txt", "x = ", x, info->fd);
 	//		puttracen("trace.txt", "y = ", y, info->fd);
 	//	}
-		while (t_x < info->token.x && star != info->num_str && (x < info->board.x || y < info->board.y))
+		while (t_x < info->token.x && star < info->num_str && x < info->board.x && y < info->board.y)
 		{
 			if (info->token.map[t_y][t_x] == '*')
 				star++;
-			if ((x < info->board.x || y < info->board.y) )
-				if (info->token.map[t_y][t_x] == '*'
-						&& ft_toupper(info->board.map[y][x]) == ft_toupper(info->player))
-							links++;
+			if (info->token.map[t_y][t_x] == '*'
+					&& ft_toupper(info->board.map[y][x]) == ft_toupper(info->player))
+						links++;
 			if  (ft_toupper(info->board.map[y][x] == info->p2
 					&& info->token.map[t_y][t_x] == '*'))
 					links += 2;
