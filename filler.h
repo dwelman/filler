@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:25:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/07 13:20:52 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/07 15:01:23 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void			init_info(t_info *info);
 
 int				place_token(t_info *info);
 
-void			print_coord(t_valid coord);
+void			print_coord(t_valid coord, t_info *info);
 
 void			cleanup(t_info *info);
 
