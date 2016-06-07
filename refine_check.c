@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:42:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 15:02:00 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 16:52:16 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,14 @@ int		count_links(t_info *info, int x, int y)
 	int	t_x;
 	int	t_y;
 	int	links;
-	int	star;
 
 	t_y = -1;
 	links = 0;
-	star = 0;
-	while (++t_y < info->token.y && star < info->num_str)
+	while (++t_y < info->token.y)
 	{
 		t_x = 0;
-		while (t_x < info->token.x && star < info->num_str && x < info->board.x && y < info->board.y)
+		while (t_x < info->token.x && x < info->board.x && y < info->board.y)
 		{
-			star += (info->token.map[t_y][t_x] == '*');
 			if (info->token.map[t_y][t_x] == '*'
 					&& ft_toupper(info->board.map[y][x]) == info->player)
 						links++;
@@ -65,9 +62,9 @@ int	place_token(t_info *info)
 	int	tx;
 	int	ty;
 
-	i = 0;
+	i = -1;
 	info->pos = (t_valid*)malloc(sizeof(t_valid) * info->link_c * info->token.y * info->token.x);
-	while (i < info->link_c)
+	while (++i < info->link_c)
 	{
 		y = info->link[i].y - info->token.y + 1;
 		ty = 0;
@@ -86,7 +83,6 @@ int	place_token(t_info *info)
 			ty++;
 			y++;
 		}
-		i++;
 	}
 	if (info->pos_c > 0)
 	{
@@ -95,18 +91,7 @@ int	place_token(t_info *info)
 	}
 	else
 	{
-		i = 0;
-		puttrace("","player  : ", info->fd);
-		write(info->fd, &info->player, 1);
-		puttracen("","link_c = ", info->link_c, info->fd);
-		while (i < info->link_c)
-		{
-			puttracen("","link x = ", info->link[i].x, info->fd);
-			puttracen("","link y = ", info->link[i].y, info->fd);
-			i++;
-		}
-		puttrace("trace.txt", "no valid found", info->fd);
 		ft_putstr("0 0\n");
-		exit (0);
+		return (0);
 	}
 }

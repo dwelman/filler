@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 13:49:34 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 16:01:37 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 17:15:56 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,12 @@ void	init_info(t_info *info)
 {
 	info->board = new_grid(NULL, 0, 0);
 	info->token = new_grid(NULL, 0, 0);
+	info->token.tok_x = 0;
+	info->token.tok_y = 0;
 	info->player = '.';
 	info->link = NULL;
 	info->link_c = 0;
 	info->pos = NULL;
 	info->pos_c = 0;
 	info->turns = 0;
-	info->num_str = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 12:52:36 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/07 16:01:18 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 17:16:27 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,8 @@ void	trim_token(t_info *info)
 	int	x;
 	int	y;
 
-	y = 0;
-	info->token.tok_x = 0;
-	info->token.tok_y = 0;
-	while (y < info->token.y)
+	y = -1;
+	while (++y < info->token.y)
 	{
 		x = 0;
 		while (x < info->token.x)
@@ -75,7 +73,6 @@ void	trim_token(t_info *info)
 			}
 			x++;
 		}
-		y++;
 	}
 	if (info->token.tok_x || info->token.tok_y)
 		gen_new_token(info);

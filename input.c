@@ -6,31 +6,23 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 16:01:55 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 17:13:38 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	count_token(t_info *info)
+void	get_xy(t_grid *ret)
 {
-	int	y;
-	int	x;
-	int	num;
+	char	*str;
+	char	*line;
 
-	y = 0;
-	num = 0;
-	while (y < info->token.y)
-	{
-		x = 0;
-		while (x < info->token.x)
-		{
-			if (info->token.map[y][x] == '*')
-				info->num_str++;
-			x++;
-		}
-		y++;
-	}
+	get_next_line(0, &line);
+	str = ft_strchr(line, ' ');
+	ret->y = ft_atoi(str++);
+	str = ft_strchr(str, ' ');
+	ret->x = ft_atoi(str);
+	free(line);
 }
 
 t_grid	get_token(t_info *info)
@@ -40,11 +32,7 @@ t_grid	get_token(t_info *info)
 	t_grid	ret;
 	int		i;
 
-	get_next_line(0, &str);
-	str = ft_strchr(str, ' ');
-	ret.y = ft_atoi(str++);
-	str = ft_strchr(str, ' ');
-	ret.x = ft_atoi(str);
+	get_xy(&ret);
 	i = 0;
 	ret.map = (char**)malloc(sizeof(char*) * ret.y);
 	while (i < ret.y)
@@ -62,18 +50,13 @@ t_grid	get_token(t_info *info)
 
 t_grid	get_map(t_info *info)
 {
-	char	*str;
 	char	*line;
 	char	*temp;
 	char	*t2;
 	t_grid	ret;
 	int		i;
 
-	get_next_line(0, &str);
-	str = ft_strchr(str, ' ');
-	ret.y = ft_atoi(str++);
-	str = ft_strchr(str, ' ');
-	ret.x = ft_atoi(str);
+	get_xy(&ret);
 	i = 0;
 	ret.map = (char**)malloc(sizeof(char*) * ret.y);
 	get_next_line(0, &line);
@@ -93,11 +76,11 @@ t_grid	get_map(t_info *info)
 void	get_player(t_info *info)
 {
 	char	*str;
+	char	*line;
 
-	get_next_line(0, &str);
-	str = ft_strchr(str, 'p');
-//	puttrace("", "player :", info->fd);
-//	puttrace("", str - 1, info->fd);
+	get_next_line(0, &line);
+	str = ft_strchr(line, 'p');
+	free(line);
 	info->pnum = ft_atoi(++str);
 	if (info->pnum == 1)
 	{
@@ -113,12 +96,7 @@ void	get_player(t_info *info)
 
 void	get_input(t_info *info)
 {
-	int		i;
-	char	*str;
-
-	i = 0;
 	info->board = get_map(info);
 	info->token = get_token(info);
 	trim_token(info);
-	count_token(info);
 }
