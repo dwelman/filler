@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:42:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 08:42:51 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 09:36:05 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ int		count_links(t_info *info, int x, int y)
 		x = x_org;
 	//	puttracen("trace.txt", "t_x = ", t_x);
 	//	puttracen("trace.txt", "t_y = ", t_y);
-	//	puttracen("trace.txt", "x = ", x);
-	//	puttracen("trace.txt", "y = ", y, info->fd);
+		if (x > info->board.x || y > info->board.y)
+		{
+			puttracen("trace.txt", "x = ", x, info->fd);
+			puttracen("trace.txt", "y = ", y, info->fd);
+		}
 		while (t_x < info->token.x && star != info->num_str)
 		{
 			if (info->token.map[t_y][t_x] == '*')
@@ -122,7 +125,7 @@ int	place_token(t_info *info)
 			puttracen("","link y = ", info->link[i].y, info->fd);
 			i++;
 		}
-		puttrace("trace.txt", "no valid found", info->fd);
+	//	puttrace("trace.txt", "no valid found", info->fd);
 		ft_putstr("0 0\n");
 		return (0);
 	}
