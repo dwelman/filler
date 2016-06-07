@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:25:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/07 07:39:00 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/07 13:20:52 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@
 typedef struct	s_grid
 {
 	char	**map;
+	char	**new_map;
 	int		x;
 	int		y;
+	int		tok_x;
+	int		tok_y;
+	int		tok_x_b;
+	int		tok_y_b;
 }				t_grid;
 
 typedef struct	s_valid
@@ -42,6 +47,7 @@ typedef struct	s_info
 	int		pos_c;
 	int		turns;
 	int		num_str;
+	
 	int		fd;//.......................................
 }				t_info;
 
@@ -68,5 +74,7 @@ void			cleanup(t_info *info);
 void			get_player(t_info *info);
 
 int				openfile(char *file);
+
+void			trim_token(t_info *info);
 
 #endif

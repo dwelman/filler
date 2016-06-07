@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 12:34:22 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 13:18:14 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ t_grid	get_token(t_info *info)
 //		puttrace("", ret.map[i], info->fd);
 		i++;
 	}
+	ret.tok_x = ret.x;
+	ret.tok_y = ret.y;
+	ret.tok_x_b = 0;
+	ret.tok_y_b = 0;
 	return (ret);
 }
 
@@ -120,5 +124,6 @@ void	get_input(t_info *info)
 	i = 0;
 	info->board = get_map(info);
 	info->token = get_token(info);
+	trim_token(info);
 	count_token(info);
 }
