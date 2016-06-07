@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:25:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/06 14:55:25 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 07:39:00 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ typedef struct	s_info
 	t_valid	*pos;
 	int		pos_c;
 	int		turns;
-	int		fd;
+	int		num_str;
+	int		fd;//.......................................
 }				t_info;
 
 void			get_input(t_info *info);

@@ -6,11 +6,32 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/06 15:51:14 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 07:45:05 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+void	count_token(t_info *info)
+{
+	int	y;
+	int	x;
+	int	num;
+
+	y = 0;
+	num = 0;
+	while (y < info->token.y)
+	{
+		x = 0;
+		while (x < info->token.x)
+		{
+			if (info->token.map[y][x] == '*')
+				info->num_str++;
+			x++;
+		}
+		y++;
+	}
+}
 
 t_grid	get_token(void)
 {
@@ -92,4 +113,5 @@ void	get_input(t_info *info)
 	i = 0;
 	info->board = get_map();
 	info->token = get_token();
+	count_token(info);
 }
