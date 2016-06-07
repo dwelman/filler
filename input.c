@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 14:52:42 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 13:18:14 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/07 16:01:55 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,10 @@ t_grid	get_token(t_info *info)
 	ret.x = ft_atoi(str);
 	i = 0;
 	ret.map = (char**)malloc(sizeof(char*) * ret.y);
-//	puttrace("", "map :", info->fd);
 	while (i < ret.y)
 	{
 		get_next_line(0, &line);
 		ret.map[i] = line;
-//		puttrace("", ret.map[i], info->fd);
 		i++;
 	}
 	ret.tok_x = ret.x;
@@ -78,18 +76,15 @@ t_grid	get_map(t_info *info)
 	ret.x = ft_atoi(str);
 	i = 0;
 	ret.map = (char**)malloc(sizeof(char*) * ret.y);
-//	puttrace("", "map :", info->fd);
 	get_next_line(0, &line);
 	while (i < ret.y)
 	{
 		get_next_line(0, &line);
-//		puttrace("", line, info->fd);
 		t2 = line;
 		line = ft_strchr(line, ' ');
 		temp = ft_strdup(++line);
 		free(t2);
 		ret.map[i] = temp;
-//		puttrace("", ret.map[i], info->fd);
 		i++;
 	}
 	return (ret);

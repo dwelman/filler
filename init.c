@@ -6,17 +6,17 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 13:49:34 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 07:45:28 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/07 16:01:37 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	print_coord(t_valid coord)
+void	print_coord(t_valid coord, t_info *info)
 {
-	ft_putnbr(coord.y);
+	ft_putnbr(coord.y - info->token.tok_y);
 	ft_putchar(' ');
-	ft_putnbr(coord.x);
+	ft_putnbr(coord.x - info->token.tok_x);
 	ft_putchar('\n');
 }
 

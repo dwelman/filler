@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:42:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/07 11:59:32 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 15:02:00 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,32 @@
 
 int		count_links(t_info *info, int x, int y)
 {
-	int	x_org;
 	int	t_x;
 	int	t_y;
 	int	links;
 	int	star;
 
-	x_org = x;
-	t_y = 0;
+	t_y = -1;
 	links = 0;
 	star = 0;
-	while (t_y < info->token.y && star < info->num_str)
+	while (++t_y < info->token.y && star < info->num_str)
 	{
 		t_x = 0;
-		x = x_org;
-	//	puttracen("trace.txt", "t_x = ", t_x);
-	//	puttracen("trace.txt", "t_y = ", t_y);
-	//	if (x > info->board.x || y > info->board.y || x < 0 || y < 0)
-	//	{
-	//		puttracen("trace.txt", "x = ", x, info->fd);
-	//		puttracen("trace.txt", "y = ", y, info->fd);
-	//	}
 		while (t_x < info->token.x && star < info->num_str && x < info->board.x && y < info->board.y)
 		{
-			if (info->token.map[t_y][t_x] == '*')
-				star++;
+			star += (info->token.map[t_y][t_x] == '*');
 			if (info->token.map[t_y][t_x] == '*'
-					&& ft_toupper(info->board.map[y][x]) == ft_toupper(info->player))
+					&& ft_toupper(info->board.map[y][x]) == info->player)
 						links++;
 			if  (ft_toupper(info->board.map[y][x] == info->p2
 					&& info->token.map[t_y][t_x] == '*'))
-					links += 2;
+						return (2);
 			t_x++;
 			x++;
 		}
+		x -= t_x;
 		y++;
-		t_y++;
 	}
-	//puttracen("trace.txt", "links = ", links, info->fd);
 	return (links);
 }
 
@@ -61,7 +49,8 @@ int		is_valid(t_info *info, int x, int y)
 	int	t_y;
 
 	t_y = 0;
-	if (x + info->token.x > info->board.x || y + info->token.y - 1 > info->board.y)//size check
+	if (x + info->token.x > info->board.x
+			|| y + info->token.y - 1 > info->board.y)
 		return (0);
 	if (count_links(info, x, y) != 1)
 		return (0);
@@ -74,10 +63,9 @@ int	place_token(t_info *info)
 	int	x;
 	int	y;
 	int	tx;
-	int	ty = 0;
+	int	ty;
 
 	i = 0;
-	info->pos_c = 0;
 	info->pos = (t_valid*)malloc(sizeof(t_valid) * info->link_c * info->token.y * info->token.x);
 	while (i < info->link_c)
 	{
@@ -91,15 +79,7 @@ int	place_token(t_info *info)
 			{
 				if (x >= 0 && y >= 0)
 					if (is_valid(info, x, y))
-					{
-						info->pos[info->pos_c] = new_pos(x, y, 0);
-						if (y >= 12)
-						{
-							//puttracen("trace.txt", "valid x = ", info->pos[info->pos_c].x, info->fd);
-							//puttracen("trace.txt", "valid y = ", info->pos[info->pos_c].y, info->fd);
-						}
-						info->pos_c++;
-					}
+						info->pos[info->pos_c++] = new_pos(x, y, 0);
 				x++;
 				tx++;
 			}
@@ -108,11 +88,9 @@ int	place_token(t_info *info)
 		}
 		i++;
 	}
-	if (info->pos_c)
+	if (info->pos_c > 0)
 	{
-	//	puttracen("trace.txt", "pos x = ", info->pos[0].x, info->fd);
-	//	puttracen("trace.txt", "pos y = ", info->pos[0].y, info->fd);
-		print_coord(info->pos[0]);
+		print_coord(info->pos[0], info);
 		return (1);
 	}
 	else
