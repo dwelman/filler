@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 06:22:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/06 12:08:58 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/07 08:12:09 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,28 @@ int	check_cell(t_info *info, int x, int y)
 	{
 		if (x - 1 > 0)
 		{
-			if (ft_toupper(info->board.map[y][x - 1]) == piece)
+			if (ft_toupper(info->board.map[y][x - 1]) != '.')
 				alive++;
 		}
 		else
 			alive++;	
 		if (x + 1 < info->board.x)
 		{
-			if (ft_toupper(info->board.map[y][x + 1] == piece))
+			if (ft_toupper(info->board.map[y][x + 1] != '.'))
 				alive++;
 		}
 		else
 			alive++;
 		if (y - 1 > 0)
 		{
-			if (ft_toupper(info->board.map[y - 1][x] == piece))
+			if (ft_toupper(info->board.map[y - 1][x] != '.'))
 				alive++;
 		}
 		else
 			alive++;
 		if (y + 1 < info->board.y)
 		{
-			if (ft_toupper(info->board.map[y + 1][x] == piece))
+			if (ft_toupper(info->board.map[y + 1][x] != '.'))
 				alive++;
 		}
 		else
