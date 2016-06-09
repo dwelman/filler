@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 12:52:36 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/07 17:16:27 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/09 09:15:50 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,19 @@ void	gen_new_token(t_info *info)
 	char	**token;
 	int		y;
 	int		x;
+	int		i;
 
 	y = info->token.tok_y;
-	token = (char **)malloc(sizeof(char *) * (info->token.tok_y_b - y));
+	i = 0;
+	token = (char **)malloc(sizeof(char *) * (info->token.tok_y_b - y + 1));
 	while (y < info->token.tok_y_b + 1)
 	{
 		x = info->token.tok_x;
-		token[y] = str_cut(info->token.map[y], x, info->token.tok_x_b + 1);
-		ft_putendl_fd(token[y], info->fd);
+		token[i] = str_cut(info->token.map[y], x, info->token.tok_x_b + 1);
 		y++;
+		i++;
 	}
+	free_grid(&info->token);
 	info->token.map = token;
 	info->token.x = info->token.tok_x_b - info->token.tok_x + 1;
 	info->token.y = info->token.tok_y_b - info->token.tok_y + 1;

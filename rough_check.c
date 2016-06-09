@@ -6,13 +6,69 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 06:22:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/07 08:25:07 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/09 08:41:15 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int	check_cell(t_info *info, int x, int y)
+void	check_diag(int *alive, t_info *info, int x, int y)
+{
+	if (y + 1 < info->board.y && x + 1 < info->board.x)
+	{
+		*alive += (ft_toupper(info->board.map[y + 1][x + 1] != '.'));
+	}
+	else
+		*alive += 1;
+	if (y + 1 < info->board.y && x - 1 > 0)
+	{
+		alive += (ft_toupper(info->board.map[y + 1][x - 1] != '.'));
+	}
+	else
+		*alive += 1;
+	if (y - 1 > 0 && x + 1 < info->board.x)
+	{
+		alive += (ft_toupper(info->board.map[y - 1][x + 1] != '.'));
+	}
+	else
+		*alive += 1;
+	if (y - 1 > 0 && x - 1 > 0)
+	{
+		*alive += (ft_toupper(info->board.map[y - 1][x - 1] != '.'));
+	}
+	else
+		*alive += 1;
+}
+
+void	check_nextto(int *alive, t_info *info, int x, int y)
+{
+	if (x - 1 > 0)
+	{
+		*alive += (ft_toupper(info->board.map[y][x - 1]) != '.');
+	}
+	else
+		*alive += 1;
+	if (x + 1 < info->board.x)
+	{
+		*alive += (ft_toupper(info->board.map[y][x + 1] != '.'));
+	}
+	else
+		*alive += 1;
+	if (y - 1 > 0)
+	{
+		*alive += (ft_toupper(info->board.map[y - 1][x] != '.'));
+	}
+	else
+		alive += 1;
+	if (y + 1 < info->board.y)
+	{
+		*alive += (ft_toupper(info->board.map[y + 1][x] != '.'));
+	}
+	else
+		*alive += 1;
+}
+
+int		check_cell(t_info *info, int x, int y)
 {
 	int		alive;
 	char	piece;
@@ -21,71 +77,14 @@ int	check_cell(t_info *info, int x, int y)
 	piece = ft_toupper(info->player);
 	if (ft_toupper(info->board.map[y][x]) == piece)
 	{
-		if (x - 1 > 0)
-		{
-			if (ft_toupper(info->board.map[y][x - 1]) != '.')
-				alive++;
-		}
-		else
-			alive++;	
-		if (x + 1 < info->board.x)
-		{
-			if (ft_toupper(info->board.map[y][x + 1] != '.'))
-				alive++;
-		}
-		else
-			alive++;
-		if (y - 1 > 0)
-		{
-			if (ft_toupper(info->board.map[y - 1][x] != '.'))
-				alive++;
-		}
-		else
-			alive++;
-		if (y + 1 < info->board.y)
-		{
-			if (ft_toupper(info->board.map[y + 1][x] != '.'))
-				alive++;
-		}
-		else
-			alive++;
-		if (y + 1 < info->board.y && x + 1 < info->board.x)
-		{
-			if (ft_toupper(info->board.map[y + 1][x + 1] != '.'))
-				alive++;
-		}
-		else
-			alive++;
-		if (y + 1 < info->board.y && x - 1 > 0)
-		{
-			if (ft_toupper(info->board.map[y + 1][x - 1] != '.'))
-				alive++;
-		}
-		else
-			alive++;
-		if (y - 1 > 0 && x + 1 < info->board.x)
-		{
-			if (ft_toupper(info->board.map[y - 1][x + 1] != '.'))
-				alive++;
-		}
-		else
-			alive++;
-		if (y - 1> 0 && x - 1 > 0)
-		{
-			if (ft_toupper(info->board.map[y - 1][x - 1] != '.'))
-				alive++;
-		}
-		else
-			alive++;
-		if (alive < 8)
-			return (1);
-		else
-			return (0);
+		check_nextto(&alive, info, x, y);
+		check_diag(&alive, info, x, y);
+		return (alive < 8);
 	}
 	return (0);
 }
 
-int	count_valid(t_info *info)
+int		count_valid(t_info *info)
 {
 	int	count;
 	int	x;
@@ -107,7 +106,7 @@ int	count_valid(t_info *info)
 	return (count);
 }
 
-int	**get_available_coords(t_info *info)
+void	get_available_coords(t_info *info)
 {
 	int	x;
 	int	y;
@@ -123,13 +122,10 @@ int	**get_available_coords(t_info *info)
 			if (check_cell(info, x, y))
 			{
 				info->link[info->link_c] = new_pos(x, y, 0);
-				//puttracen("trace.txt", "link x = ", info->link[info->link_c].x);
-				//puttracen("trace.txt", "link y = ", info->link[info->link_c].y);
 				info->link_c++;
 			}
 			x++;
 		}
 		y++;
 	}
-	return (0);
 }
