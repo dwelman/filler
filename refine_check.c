@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:42:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/09 14:25:14 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/09 14:43:47 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		is_valid(t_info *info, int x, int y)
 	if (x - info->token.tok_x >= 0 && y - info->token.tok_y >= 0)
 	{
 		if (x + info->token.x > info->board.x
-				|| y + info->token.y - 1 > info->board.y)
+				|| y + info->token.y > info->board.y)
 			return (0);
 		if (count_links(info, x, y) != 1)
 			return (0);

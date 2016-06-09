@@ -31,7 +31,7 @@ float	ideal_dist(t_info *info)
 {
 	float	start_d;
 	start_d = calc_dist(info->op_x, info->op_y, info->st_x, info->st_y);
-	return (start_d / 2 + 1);
+	return (start_d / 5);
 }
 
 int		closest_index(t_info *info)
