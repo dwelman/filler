@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:28:20 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/09 15:09:24 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/09 16:19:47 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ int	check_results(t_info *info, int found)
 	{
 		chosen_one = closest_index(info);
 		w = 0;
-	//	while (w < 20000000)
-			w++;
-	//	while (w < 20000000)
-			w++;		
 		print_coord(info->pos[chosen_one], info);
 	}
 	else

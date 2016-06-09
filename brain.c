@@ -12,7 +12,7 @@ float	ideal_dist(t_info *info)
 {
 	float	start_d;
 	start_d = calc_dist(info->op_x, info->op_y, info->st_x, info->st_y);
-	return (start_d / 5);
+	return (start_d / 2);
 }
 
 int		closest_index(t_info *info)
@@ -29,12 +29,20 @@ int		closest_index(t_info *info)
 	while (++i < info->pos_c)
 	{
 		d = calc_dist(info->pos[i].x, info->pos[i].y, info->op_x, info->op_y);
-		if (d - info->ideal_dist < ref)
+		if (info->turns % 3 == 0)
 		{
-			index = i;
-			ref = d - info->ideal_dist;
+			if (d - info->ideal_dist < ref)
+			{
+				index = i;
+				ref = d - info->ideal_dist;
+			}
 		}
-		i++;
+		else if (d - info->ideal_dist > ref)
+			{
+				index = i;
+				ref = d - info->ideal_dist;
+			}
+	//	i++;
 	}
 	return (index);
 }
