@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   brain.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/09 16:42:15 by ddu-toit          #+#    #+#             */
+/*   Updated: 2016/06/09 16:56:55 by ddu-toit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
 float	calc_dist(int x1, int y1, int x2, int y2)
@@ -11,8 +23,15 @@ float	calc_dist(int x1, int y1, int x2, int y2)
 float	ideal_dist(t_info *info)
 {
 	float	start_d;
+
 	start_d = calc_dist(info->op_x, info->op_y, info->st_x, info->st_y);
 	return (start_d / 2);
+}
+
+int		update_index(t_info *info, int i, int d, float *ref)
+{
+	*ref = d - info->ideal_dist;
+	return (i);
 }
 
 int		closest_index(t_info *info)
@@ -32,17 +51,10 @@ int		closest_index(t_info *info)
 		if (info->turns % 3 == 0)
 		{
 			if (d - info->ideal_dist < ref)
-			{
-				index = i;
-				ref = d - info->ideal_dist;
-			}
+				index = update_index(info, i, d, &ref);
 		}
 		else if (d - info->ideal_dist > ref)
-			{
-				index = i;
-				ref = d - info->ideal_dist;
-			}
-	//	i++;
+			index = update_index(info, i, d, &ref);
 	}
 	return (index);
 }
