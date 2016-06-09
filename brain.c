@@ -1,7 +1,7 @@
 #include "filler.h"
-#include <stdio.h>
+#include <stdio.h>//waefsrtgsrtsvrvbfsb
 
-float	Qsqrt(float num)
+float	Qsqrt(float num)//erfsefgaeraev
 {
 	long	i;
 	float	x2;
@@ -28,6 +28,13 @@ float	calc_dist(int x1, int y1, int x2, int y2)
 	return (dist);
 }
 
+float	ideal_dist(t_info *info)
+{
+	float	start_d;
+	start_d = calc_dist(info->op_x, info->op_y, info->st_x, info->st_y);
+	return (start_d);
+}
+
 int		closest_index(float target, t_info *info)
 {
 	int		index;
@@ -37,26 +44,17 @@ int		closest_index(float target, t_info *info)
 
 	index = 0;
 	i = 0;
-	ref = calc_dist(info->pos[i].x, info->pos[i].y, info->op_x, info->op_y);
+	ref = calc_dist(info->pos[i].x, info->pos[i].y, info->op_x, info->op_y)
+		- info->ideal_dist;
 	while (++i < info->pos_c)
 	{
 		d = calc_dist(info->pos[i].x, info->pos[i].y, info->op_x, info->op_y);
-		if (d < ref)
+		if (d - info->ideal_dist < ref)
 		{
 			index = i;
-			ref = d;
+			ref = d - info->ideal_dist;
 		}
 		i++;
 	}
 	return (index);
-}
-
-int	main(void)
-{
-	float dist;
-
-	dist = calc_dist(0, 0, 10, 10);
-	printf("dist = %f\n", dist);
-	return(0);
-
 }

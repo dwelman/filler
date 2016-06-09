@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:28:20 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/09 11:40:46 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/09 13:07:48 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int	check_results(t_info *info, int found)
 {
+	int	chosen_one;
+
 	if (found)
 	{
-		//calc ideal dist
-		//choose coord closest to ideal
-		print_coord(info->pos[0], info);
+		chosen_one = closest_index(0, info);
+		print_coord(info->pos[chosen_one], info);
 	}
 	else
 	{
@@ -47,17 +48,13 @@ void	set_opp_xy(t_info *info)
 			if (info->board.map[y][x] == info->player)
 			{
 				info->st_x = x;
-				info->sx_y = y;
+				info->st_y = y;
 			}
 			x++;
 		}
 		y++;
 	}
-	ideal_dist(map);
-	ft_putstr_fd("op_x = ",info->fd);
-	ft_putnbr_fd(info->op_x, info->fd);
-	ft_putstr_fd("\nop_y = ", info->fd);
-	ft_putnbr_fd(info->op_y, info->fd);
+	info->ideal_dist = ideal_dist(info);
 }
 
 int	main(void)
@@ -67,7 +64,6 @@ int	main(void)
 
 	init_info(&info);
 	get_player(&info);
-	//get original x & y of opponent
 	info.fd = openfile("trace.txt");
 	while (1)
 	{
@@ -78,11 +74,11 @@ int	main(void)
 			found = place_token(&info);
 			if (check_results(&info, found) == 0)
 				return (0);
+			if (info.turns == 0)
+				set_opp_xy(&info);
 			cleanup(&info);
 		}
-		if (info.turns == 0)
-			set_opp_xy(&info);
-		info.turns++;
+			info.turns++;
 	}
 	close(info.fd);
 	return (0);

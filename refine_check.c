@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:42:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/09 09:27:50 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/09 13:50:43 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		is_valid(t_info *info, int x, int y)
 	int	t_y;
 
 	t_y = 0;
-	if (x >= 0 && y >= 0)
+	if (x - info->token.tok_x >= 0 && y - info->token.tok_y >= 0)
 	{
 		if (x + info->token.x > info->board.x
 				|| y + info->token.y - 1 > info->board.y)
