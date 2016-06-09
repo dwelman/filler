@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:25:33 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/09 11:53:41 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/09 14:22:21 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ void   			free_grid(t_grid *grid);
 
 float			ideal_dist(t_info *map);
 
-int				closest_index(float target, t_info *info);
+int				closest_index(t_info *info);
 
 #endif

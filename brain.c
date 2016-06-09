@@ -24,7 +24,6 @@ float	calc_dist(int x1, int y1, int x2, int y2)
 	float dist;
 
 	dist = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
-	dist = Qsqrt(dist);
 	return (dist);
 }
 
@@ -32,10 +31,10 @@ float	ideal_dist(t_info *info)
 {
 	float	start_d;
 	start_d = calc_dist(info->op_x, info->op_y, info->st_x, info->st_y);
-	return (start_d);
+	return (start_d / 2 + 1);
 }
 
-int		closest_index(float target, t_info *info)
+int		closest_index(t_info *info)
 {
 	int		index;
 	int		i;

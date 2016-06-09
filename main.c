@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:28:20 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/09 13:07:48 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/09 14:25:51 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	check_results(t_info *info, int found)
 
 	if (found)
 	{
-		chosen_one = closest_index(0, info);
-		print_coord(info->pos[chosen_one], info);
+		chosen_one = closest_index(info);
+		print_coord(info->pos[0], info);
 	}
 	else
 	{
