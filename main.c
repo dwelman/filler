@@ -6,21 +6,19 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 09:28:20 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/09 16:19:47 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/09 16:44:23 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int	check_results(t_info *info, int found)
+int		check_results(t_info *info, int found)
 {
 	int	chosen_one;
-	int	w = 0;
 
 	if (found)
 	{
 		chosen_one = closest_index(info);
-		w = 0;
 		print_coord(info->pos[chosen_one], info);
 	}
 	else
@@ -59,14 +57,13 @@ void	set_opp_xy(t_info *info)
 	info->ideal_dist = ideal_dist(info);
 }
 
-int	main(void)
+int		main(void)
 {
 	t_info	info;
 	int		found;
 
 	init_info(&info);
 	get_player(&info);
-	info.fd = openfile("trace.txt");
 	while (1)
 	{
 		if (info.turns % info.pnum == 0)
@@ -80,8 +77,7 @@ int	main(void)
 				set_opp_xy(&info);
 			cleanup(&info);
 		}
-			info.turns++;
+		info.turns++;
 	}
-	close(info.fd);
 	return (0);
 }
